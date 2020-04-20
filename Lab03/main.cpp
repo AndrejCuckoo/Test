@@ -42,6 +42,7 @@ vector<size_t> body(vector<double>& numbers,size_t bin_count){
 }
 
 
+
 void
 svg_begin(double width, double height) {
     cout << "<?xml version='1.0' encoding='UTF-8'?>\n";
@@ -51,16 +52,24 @@ svg_begin(double width, double height) {
     cout << "viewBox='0 0 " << width << " " << height << "' ";
     cout << "xmlns='http://www.w3.org/2000/svg'>\n";
 }
+void svg_text(double left, double baseline, string text){
+    cout << "<text x='" << left << "' y='"<<baseline<<"' >"<< text <<"< /text>";
+}
 
-void
-svg_end() {
+
+void svg_end() {
     cout << "</svg>\n";
 }
-void
-show_histogram_svg(const vector<size_t>& bins) {
+void svg_rect(double x, double y, double width, double height);
+
+void show_histogram_svg(const vector<size_t>& bins) {
     svg_begin(400, 300);
+    svg_text(20, 20, to_string(bins[0]));
+    svg_rect(50, 0, static_cast<double>(bins[0]) * 10, 30);
     svg_end();
 }
+
+
 
 int main() {
     // Ввод данных
@@ -72,7 +81,6 @@ int main() {
 
     // Обработка данных
     vector<size_t>bins = body(numbers,bin_count);
-
     // Вывод данных
     show_histogram_svg(bins);
 
