@@ -41,7 +41,10 @@ vector<size_t> body(vector<double>& numbers,size_t bin_count){
     return bins;
 }
 
-
+void svg_text(double left,double baseline, string text)
+{
+    cout<< "<text x='" << left << "' y='" << baseline << "'>'"<< text<< "'</text>";
+}
 
 void
 svg_begin(double width, double height) {
@@ -51,9 +54,6 @@ svg_begin(double width, double height) {
     cout << "height='" << height << "' ";
     cout << "viewBox='0 0 " << width << " " << height << "' ";
     cout << "xmlns='http://www.w3.org/2000/svg'>\n";
-}
-void svg_text(double left, double baseline, string text){
-    cout << "<text x='" << left << "' y='"<<baseline<<"' > '"<< text <<"' < /text>";
 }
 
 
