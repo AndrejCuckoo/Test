@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-
+#include "histogram.h"
 using namespace std;
 
 vector<double> input(size_t number_count){
@@ -11,32 +11,22 @@ vector<double> input(size_t number_count){
     return numbers;
 }
 
-vector<double> minmaxe(vector<double>& numbers){
-    //Поиск минимума и максимума соответственно
-    vector<double> mimax(2,0);
-    mimax[0] = numbers[0];
-    mimax[1] = numbers[0];
-    for (double number : numbers) {
-        if (number < mimax[0]) {
-            mimax[0] = number;
-        }
-        if (number > mimax[1]) {
-            mimax[1] = number;
-        }
-    }
-    return mimax;
-}
+
 
 vector<size_t> body(vector<double>& numbers,size_t bin_count){
     // Обработка данных
     vector<size_t> bins(bin_count);
-    vector<double> mimax = minmaxe(numbers);
+    double min;
+    double max;
+    if(numbers.size()>0){
+    find_minmax(numbers,min,max);
     for (double number : numbers) {
-        size_t bin = (size_t)((number - mimax[0]) / (mimax[1] - mimax[0]) * bin_count);
+        size_t bin = (size_t)((number - min) / (max - min) * bin_count);
         if (bin == bin_count) {
             bin--;
         }
         bins[bin]++;
+    }
     }
     return bins;
 }
@@ -86,7 +76,6 @@ void show_histogram_svg(const vector<size_t>& bins) {
 }
 
 
-
 int main() {
     // Ввод данных
     size_t number_count;
@@ -94,10 +83,10 @@ int main() {
     vector <double> numbers = input(number_count);
     size_t bin_count;
     cin >> bin_count;
-
     // Обработка данных
     const auto bins = body(numbers,bin_count);
     // Вывод данных
+
     show_histogram_svg(bins);
     return 0;
 }
