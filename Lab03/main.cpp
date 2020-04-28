@@ -53,23 +53,34 @@ void svg_rect(double x, double y, double width, double height, string stroke = "
     cout<< "<rect x='" << x << "' y='" << y << "' width='" << width << "' height='" << height << "' stroke='"<< stroke <<"' fill='"<<fill<<"'/>";
 }
 
+double scaling(double IMAGE_HEIGHT,double BIN_HEIGHT,double bin_count){
+    double height = bin_count*BIN_HEIGHT;
+    if(height<=IMAGE_HEIGHT &&height>0){
+        height = IMAGE_HEIGHT/bin_count;
+    }
+    return height;
+}
+
 void show_histogram_svg(const vector<size_t>& bins,double BIN_HEIGHT,double bin_count) {
     const auto IMAGE_WIDTH = 400;
     const auto IMAGE_HEIGHT = 700;
     const auto TEXT_LEFT = 20;
     const auto TEXT_BASELINE = 20;
     const auto TEXT_WIDTH = 50;
-    const auto BLOCK_WIDTH = 10;
+//    const auto BLOCK_WIDTH = 1;
     const auto STROKE = "aqua";
     const auto FILL = "darkblue";
-    if(bin_count*BIN_HEIGHT>IMAGE_HEIGHT){
-        BIN_HEIGHT =IMAGE_HEIGHT/bin_count;
-    }
     svg_begin(IMAGE_WIDTH, IMAGE_HEIGHT);
     svg_text(TEXT_LEFT, TEXT_BASELINE, to_string(bins[0]));
     double top = 0;
+    double maxima=-1;
     for (size_t bin : bins) {
-        const double bin_width = BLOCK_WIDTH * bin;
+            if(maxima <bin){
+                maxima = bin;
+            }
+    }
+    for (size_t bin : bins) {
+        const double bin_width = IMAGE_WIDTH *bin/ maxima;
         svg_text(TEXT_LEFT, top + TEXT_BASELINE, to_string(bin));
         svg_rect(TEXT_WIDTH, top, bin_width, BIN_HEIGHT,STROKE,FILL);
         top += BIN_HEIGHT;
