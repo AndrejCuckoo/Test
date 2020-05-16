@@ -3,6 +3,7 @@
 #include "histogram.h"
 #include "svg.h"
 #include <fstream>
+#include <curl/curl.h>
 using namespace std;
 
 
@@ -57,6 +58,7 @@ vector<size_t> make_histogram(const vector<double>& numbers,size_t bin_count){
 
 
 int main() {
+    curl_global_init(CURL_GLOBAL_ALL);
     const auto input = read_input(cin,true);
     const auto bins = make_histogram(input.numbers,input.bin_count);
     show_histogram_svg(bins,input.bin_height,input.bin_count);
