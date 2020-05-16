@@ -2,20 +2,43 @@
 #include <vector>
 #include "histogram.h"
 #include "svg.h"
-//#include "svg.h"
+#include <fstream>
 using namespace std;
 
-vector<double> input(size_t number_count){
+
+vector<double> input_numbers(istream& in,size_t number_count){
     vector<double> numbers(number_count);
     for (size_t i = 0; i < number_count; i++) {
-        cin >> numbers[i];
+        in >> numbers[i];
     }
     return numbers;
 }
 
+Input read_input(istream& in,bool flag) {
+    Input data;
+    if(flag){
+        cerr <<"Showing hints"<< endl;
+    }
+    cerr << "Enter number count: ";
+    size_t number_count;
+    cin >> number_count;
+    data.number_count = number_count;
 
+    cerr << "Enter numbers: ";
+    data.numbers = input_numbers(in, number_count);
 
-vector<size_t> body(const vector<double>& numbers,size_t bin_count){
+    size_t bin_count;
+    cin >> bin_count;
+    data.bin_count = bin_count;
+
+    double bin_height;
+    cin >> bin_height;
+    data.bin_height = bin_height;
+
+    return data;
+}
+
+vector<size_t> make_histogram(const vector<double>& numbers,size_t bin_count){
     // Обработка данных
     vector<size_t> bins(bin_count);
     double min;
@@ -34,19 +57,8 @@ vector<size_t> body(const vector<double>& numbers,size_t bin_count){
 
 
 int main() {
-    // Ввод данных
-    size_t number_count;
-    cin >> number_count;
-    vector <double> numbers = input(number_count);
-    size_t bin_count;
-    cin >> bin_count;
-    // Height
-    double bin_height;
-    cin >> bin_height;
-    // Обработка данных
-    const auto bins = body(numbers,bin_count);
-    // Вывод данных
-
-    show_histogram_svg(bins,bin_height,bin_count);
+    const auto input = read_input(cin,true);
+    const auto bins = make_histogram(input.numbers,input.bin_count);
+    show_histogram_svg(bins,input.bin_height,input.bin_count);
     return 0;
 }
