@@ -28,10 +28,12 @@ Input read_input(istream& in,bool flag) {
     cerr << "Enter numbers: ";
     data.numbers = input_numbers(in, number_count);
 
+    cerr << "Enter bin count: ";
     size_t bin_count;
     cin >> bin_count;
     data.bin_count = bin_count;
 
+    cerr << "Enter bin height: ";
     double bin_height;
     cin >> bin_height;
     data.bin_height = bin_height;
@@ -57,7 +59,19 @@ vector<size_t> make_histogram(const vector<double>& numbers,size_t bin_count){
 
 
 
-int main() {
+int main(int argc, char* argv[]) {
+    if(argc>1){
+
+        CURL *curl = curl_easy_init();
+        if(curl) {
+            CURLcode res;
+            curl_easy_setopt(curl, CURLOPT_URL, argv[1]);
+            res = curl_easy_perform(curl);
+            curl_easy_cleanup(curl);
+}
+        return 0;
+    }
+
     curl_global_init(CURL_GLOBAL_ALL);
     const auto input = read_input(cin,true);
     const auto bins = make_histogram(input.numbers,input.bin_count);
