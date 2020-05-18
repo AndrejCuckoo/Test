@@ -32,14 +32,6 @@ vector<size_t> body(const vector<double>& numbers,size_t bin_count){
 
 
 int main() {
-
-    const char* name = "Commander Shepard";
-    int year = 2154;
-    printf("%s was born in %d.\n", name, year);
-
-    printf("n = %08x\n", 0x1234567); // 01234567
-    return 0;
-
     // ¬вод данных
     size_t number_count;
     cin >> number_count;
