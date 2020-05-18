@@ -35,30 +35,39 @@ vector<size_t> body(const vector<double>& numbers,size_t bin_count){
 int main() {
     auto info = GetVersion();
     DWORD build;
-    printf("n = %u\n",info);
-    printf("n = %08x\n", info); // 01234567
-    printf("n = %08o\n", info); // 01234567
+//    printf("n = %u\n",info);
+//    printf("n = %08x\n", info); // 01234567
+//    printf("n = %08o\n", info); // 01234567
     DWORD mask = 0b00000000'00000000'11111111'11111111;
     DWORD version = info & mask;
-    cout << version << endl; // 518
+//    cout << version << endl; // 518
     DWORD platform = info >> 16;
-    cout << platform << "  Build version" << endl;
+//    cout << platform << "  Build version" << endl;
     DWORD version_major = version & 0x00ff;
     DWORD version_minor = version >> 8;
-    cout << version_minor  << endl;
-    cout << version_major << endl;
-    printf("m_version10 = %lu\n",version_major);
-    printf("m_version16 = %08lx\n",version_major);
-    printf("M_version10 = %lu\n",version_minor);
-    printf("M_version16 = %08lx\n",version_minor);
+//    cout << version_minor  << endl;
+//    cout << version_major << endl;
+//    printf("m_version10 = %lu\n",version_major);
+//    printf("m_version16 = %08lx\n",version_major);
+//    printf("M_version10 = %lu\n",version_minor);
+//    printf("M_version16 = %08lx\n",version_minor);
     if ((info & 0b10000000'00000000'0000000'00000000) == 0) {
-        cout << "High-order bit is zero" << endl;
+//        cout << "High-order bit is zero" << endl;
     }
     if ((info & 0x10000000) == 0) {
-        cout << "High-order bit is zero(16-bit)" << endl;
+//        cout << "High-order bit is zero(16-bit)" << endl;
     }
-    printf("Windows v%lu.%lu (build %lu)\n",version_major,version_minor,build);
-    return 0;
+//    printf("Windows v%lu.%lu (build %lu)\n",version_major,version_minor,build);
+    string Ver ={"Windows v"};
+    Ver.append(to_string(version_major));
+    Ver.append(".");
+    Ver.append(to_string(version_minor));
+    Ver.append("  build: ");
+    Ver.append(to_string(build));
+    char buffer[256];
+    unsigned long size = 256;
+    GetComputerName( buffer, &size );
+
     // Ввод данных
     size_t number_count;
     cin >> number_count;
@@ -72,6 +81,6 @@ int main() {
     const auto bins = body(numbers,bin_count);
     // Вывод данных
 
-    show_histogram_svg(bins,bin_height,bin_count);
+    show_histogram_svg(bins,bin_height,bin_count,buffer,Ver);
     return 0;
 }
