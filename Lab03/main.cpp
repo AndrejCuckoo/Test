@@ -2,6 +2,7 @@
 #include <vector>
 #include "histogram.h"
 #include "Svg.h"
+#include <windows.h>
 using namespace std;
 
 vector<double> input(size_t number_count){
@@ -32,6 +33,10 @@ vector<size_t> body(const vector<double>& numbers,size_t bin_count){
 
 
 int main() {
+    printf("n = %u\n",GetVersion());
+    printf("n = %08x\n", GetVersion()); // 01234567
+    printf("n = %08o\n", GetVersion()); // 01234567
+    return 0;
     // ¬вод данных
     size_t number_count;
     cin >> number_count;
