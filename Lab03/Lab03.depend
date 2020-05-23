@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1589797798 source:c:\users\andrej\test\lab03\main.cpp
+1589805116 source:c:\users\andrej\test\lab03\main.cpp
 	<iostream>
 	<vector>
 	"histogram.h"
@@ -12,6 +12,6 @@
 1589651437 c:\users\andrej\test\lab03\histogram.h
 	<vector>
 
-1589795787 c:\users\andrej\test\lab03\svg.h
+1589804340 c:\users\andrej\test\lab03\svg.h
 	<vector>
 
