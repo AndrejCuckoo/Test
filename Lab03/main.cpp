@@ -1,16 +1,16 @@
 #include <iostream>
 #include <vector>
 #include "histogram.h"
-<<<<<<< HEAD
+//<<<<<<< HEAD
 #include "svg.h"
 #include <fstream>
 #include <curl/curl.h>
 #include <sstream>
 #include <string>
-=======
+//=======
 #include "Svg.h"
 #include <windows.h>
->>>>>>> lab04-2
+//>>>>>>> lab04-2
 using namespace std;
 
 
@@ -64,7 +64,7 @@ vector<size_t> make_histogram(const vector<double>& numbers,size_t bin_count){
     return bins;
 }
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 size_t
 write_data(void* items, size_t item_size, size_t item_count, void* ctx)
 {
@@ -99,7 +99,7 @@ download(const string& address) {
     return read_input(buffer, false);
 }
 
-int main(int argc, char* argv[]) {
+/*int main(int argc, char* argv[]) {
     Input input;
     if (argc > 1) {
         input = download(argv[1]);
@@ -108,9 +108,10 @@ int main(int argc, char* argv[]) {
     }
     const auto bins = make_histogram(input.numbers,input.bin_count);
     show_histogram_svg(bins,input.bin_height,input.bin_count);
-=======
+//=======*/
 
-int main() {
+int main(int argc, char* argv[]) {
+    Input input;
     auto info = GetVersion();
     DWORD build;
 //    printf("n = %u\n",info);
@@ -149,17 +150,21 @@ int main() {
     // Ввод данных
     size_t number_count;
     cin >> number_count;
-    vector <double> numbers = input(number_count);
+    if (argc > 1) {
+        input = download(argv[1]);
+    } else {
+        input = read_input(cin, true);
+    }
     size_t bin_count;
     cin >> bin_count;
     // Height
     double bin_height;
     cin >> bin_height;
     // Обработка данных
-    const auto bins = body(numbers,bin_count);
+    const auto bins = make_histogram(input.numbers,input.bin_count);
     // Вывод данных
 
     show_histogram_svg(bins,bin_height,bin_count,buffer,Ver);
->>>>>>> lab04-2
+//>>>>>>> lab04-2
     return 0;
 }
