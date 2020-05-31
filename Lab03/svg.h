@@ -1,7 +1,12 @@
 #ifndef SVG_H_INCLUDED
 #define SVG_H_INCLUDED
+#include <iostream>
 #include <vector>
+
+
+#include <sstream>
 #include <string>
+
 using namespace std;
 void svg_text(double left,double baseline, string text);
 
