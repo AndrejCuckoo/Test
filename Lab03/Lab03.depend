@@ -26,14 +26,14 @@
 1590246552 c:\users\andrej\test\lab03\histogram.h
 	<vector>
 
-1590248174 c:\users\andrej\test\lab03\svg.h
-	<vector>
-	<string>
-
-1589543924 source:c:\users\andrej\test\lab03\svg.cpp
+1590939214 c:\users\andrej\test\lab03\svg.h
 	<iostream>
 	<vector>
+	<sstream>
 	<string>
+
+1590939936 source:c:\users\andrej\test\lab03\svg.cpp
+	"svg.h"
 
 1589635121 c:\users\andrej\test\lab03\curl\include\curl\curl.h
 	"curlver.h"

@@ -38,6 +38,10 @@
 			<Add option="-fexceptions" />
 			<Add option="-DCURL_STATICLIB" />
 		</Compiler>
+		<Unit filename="Svg.cpp" />
+		<Unit filename="Svg.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="Svg.h">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -46,9 +50,6 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="main.cpp" />
-		<Unit filename="svg.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />
