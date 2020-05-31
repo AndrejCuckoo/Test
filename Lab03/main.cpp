@@ -24,6 +24,9 @@ vector<double> input_numbers(istream& in,size_t number_count)
     return numbers;
 }
 
+size_t bin_count;
+double bin_height;
+size_t number_count;
 Input read_input(istream& in,bool flag)
 {
     Input data;
@@ -41,12 +44,12 @@ Input read_input(istream& in,bool flag)
 
     cerr << "Enter bin count: ";
     size_t bin_count;
-    cin >> bin_count;
+    in >> bin_count;
     data.bin_count = bin_count;
 
     cerr << "Enter bin height: ";
     double bin_height;
-    cin >> bin_height;
+    in >> bin_height;
     data.bin_height = bin_height;
 
     return data;
@@ -112,7 +115,6 @@ download(const string& address)
             }
         }
         curl_easy_cleanup(curl);
-
         return read_input(buffer, false);
     }
 }
@@ -168,8 +170,7 @@ download(const string& address)
         GetComputerName( buffer, &size );
 
         // Ввод данных
-        size_t number_count;
-        cin >> number_count;
+
         if (argc > 1)
         {
             input = download(argv[1]);
@@ -178,11 +179,11 @@ download(const string& address)
         {
             input = read_input(cin, true);
         }
-        size_t bin_count;
+/*        size_t bin_count;
         cin >> bin_count;
         // Height
         double bin_height;
-        cin >> bin_height;
+        cin >> bin_height;*/
         // Обработка данных
         const auto bins = make_histogram(input.numbers,input.bin_count);
         // Вывод данных
