@@ -1,6 +1,7 @@
 #include "histogram.h"
-
+#include <iostream>
 #include <cassert>
+#include "Svg.h"
 
 void
 test_positive() {
@@ -41,12 +42,22 @@ void
 test_empty_array() {
     double min = 0;
     double max = 0;
-    vector <double> arr = {};
-    if (arr.size()>0){
     find_minmax({}, min, max);
-    assert(min == 1);
-    assert(max == 1);
-    }
+    assert(min == 0);
+    assert(max == 0);
+}
+
+void
+test_Scailing() {
+    double t = scaling(700, 30,3);
+    assert(t == 30);
+
+}
+
+test_Scailing_02() {
+    double t = scaling(700,40,0);
+    assert(t == 0);
+
 }
 
 int
@@ -56,4 +67,6 @@ main() {
     test_similar();
     test_one_number();
     test_empty_array();
+    test_Scailing();
+    test_Scailing_02();
 }
