@@ -37,7 +37,7 @@ void show_histogram_svg(const vector<size_t>& bins,double BIN_HEIGHT,double bin_
     const auto TEXT_LEFT = 20;
     const auto TEXT_BASELINE = 20;
     const auto TEXT_WIDTH = 50;
-    const auto BLOCK_WIDTH = 1;
+//    const auto BLOCK_WIDTH = 1;
     const auto STROKE = "aqua";
     const auto FILL = "darkblue";
     svg_begin(IMAGE_WIDTH, IMAGE_HEIGHT);

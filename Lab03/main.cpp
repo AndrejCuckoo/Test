@@ -2,7 +2,7 @@
 #include <vector>
 #include "histogram.h"
 //<<<<<<< HEAD
-#include "svg.h"
+
 #include <fstream>
 #include <curl/curl.h>
 #include <sstream>
@@ -13,6 +13,9 @@
 //>>>>>>> lab04-2
 using namespace std;
 
+size_t bin_count;
+double bin_height;
+size_t number_count;
 
 vector<double> input_numbers(istream& in,size_t number_count)
 {
@@ -24,9 +27,7 @@ vector<double> input_numbers(istream& in,size_t number_count)
     return numbers;
 }
 
-size_t bin_count;
-double bin_height;
-size_t number_count;
+
 Input read_input(istream& in,bool flag)
 {
     Input data;
@@ -36,7 +37,7 @@ Input read_input(istream& in,bool flag)
     }
     cerr << "Enter number count: ";
     size_t number_count;
-    cin >> number_count;
+    in >> number_count;
     data.number_count = number_count;
 
     cerr << "Enter numbers: ";
