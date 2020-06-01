@@ -1,5 +1,6 @@
-<<<<<<< HEAD
-/curl
-=======
-/curl
->>>>>>> lab04-2
+obj/
+bin/
+curl/
+*.layout
+*.depend
+
