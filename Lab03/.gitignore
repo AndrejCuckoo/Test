@@ -3,4 +3,4 @@ bin/
 curl/
 *.layout
 *.depend
-
+*.o
