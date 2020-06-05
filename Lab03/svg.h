@@ -3,6 +3,11 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <sstream>
+using namespace std;
+
+
+
 using namespace std;
 
 void svg_text(double left,double baseline, string text);
@@ -16,6 +21,9 @@ void svg_rect(double x, double y, double width, double height, string stroke = "
 
 double scaling(double IMAGE_HEIGHT,double BIN_HEIGHT,double bin_count);
 
-void show_histogram_svg(const vector<size_t>& bins,double BIN_HEIGHT,double bin_count);
+
+
+void show_histogram_svg(const vector<size_t>& bins,double BIN_HEIGHT,double bin_count,string version, string Window);
+
 
 #endif // SVG_H_INCLUDED
