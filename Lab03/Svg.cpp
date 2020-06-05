@@ -28,6 +28,9 @@ void svg_rect(double x, double y, double width, double height, string stroke, st
 double scaling(double IMAGE_HEIGHT,double BIN_HEIGHT,double bin_count){
     if(BIN_HEIGHT*bin_count <= IMAGE_HEIGHT &&BIN_HEIGHT*bin_count>0){
         return BIN_HEIGHT;}
+    else if(bin_count==0){
+        return 0;
+    }
     return IMAGE_HEIGHT/bin_count;
 }
 

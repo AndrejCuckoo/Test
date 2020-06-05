@@ -13,7 +13,7 @@
 //>>>>>>> lab04-2
 using namespace std;
 
-size_t bin_count;
+
 double bin_height;
 size_t number_count;
 
@@ -132,6 +132,8 @@ download(const string& address)
 
     int main(int argc, char* argv[])
     {
+//        double c = 125.64857;
+//        printf("%10.1f", c);
         Input input;
         auto info = GetVersion();
         DWORD build;
@@ -151,6 +153,10 @@ download(const string& address)
 //    printf("m_version16 = %08lx\n",version_major);
 //    printf("M_version10 = %lu\n",version_minor);
 //    printf("M_version16 = %08lx\n",version_minor);
+        if ((info & 0x80000000) == 0)
+        {
+            build = platform;
+        }
         if ((info & 0b10000000'00000000'0000000'00000000) == 0)
         {
 //        cout << "High-order bit is zero" << endl;
@@ -189,7 +195,7 @@ download(const string& address)
         const auto bins = make_histogram(input.numbers,input.bin_count);
         // Вывод данных
 
-        show_histogram_svg(bins,bin_height,bin_count,buffer,Ver);
+        show_histogram_svg(bins,input.bin_height,input.bin_count,buffer,Ver);
 //>>>>>>> lab04-2
         return 0;
     }
