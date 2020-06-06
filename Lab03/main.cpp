@@ -120,6 +120,8 @@ download(const string& address)
     }
 }
 
+
+
     int main(int argc, char* argv[])
     {
 //        double c = 125.64857;
@@ -127,6 +129,7 @@ download(const string& address)
         Input input;
         auto info = GetVersion();
         DWORD build;
+//        printf("%x", 15);
 //    printf("n = %u\n",info);
 //    printf("n = %08x\n", info); // 01234567
 //    printf("n = %08o\n", info); // 01234567
